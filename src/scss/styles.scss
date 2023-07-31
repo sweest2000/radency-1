@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '~bootstrap/scss/bootstrap';
+
+* {
+  @apply p-0 m-0;
+}
+
+.app {
+  @apply bg-white h-screen;
+}
+
+.container-sm {
+  @apply flex justify-end gap-3;
+}
+
+.container-md {
+  @apply flex pr-0 justify-end;
+}
+
+.container {
+  @apply flex flex-col justify-center ml-7 mr-10 mt-5 gap-4;
+}
+
+.main-table {
+  @apply flex flex-col gap-3 w-full text-[#78797E];
+}
+
+thead tr {
+  @apply bg-[#999999] rounded-md;
+}
+
+tbody {
+  @apply flex flex-col gap-3;
+}
+
+tr {
+  @apply flex bg-[#E8EAF5];
+}
+
+td,
+th {
+  @apply flex flex-grow basis-56 pt-2 pb-2 pl-2 pr-0 w-12;
+}
+
+td img {
+  filter: invert(53%) sepia(9%) saturate(165%) hue-rotate(192deg)
+    brightness(88%) contrast(91%);
+}
+
+.text-wrapper {
+  @apply truncate;
+}
+
+th {
+  @apply text-white font-extrabold;
+}
+
+.name {
+  @apply text-black;
+}
+
+.buttons {
+  @apply flex gap-3;
+}
+
+.icon {
+  @apply pl-4;
+}
+
+#th-archive,
+#th-trash {
+  filter: invert(100%);
+}

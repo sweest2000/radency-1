@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="scss/styles.scss" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="container">
+        <table class="main-table">
+          <thead>
+            <th scope="col"></th>
+            <th scope="col">
+              <div><span>Name</span></div>
+            </th>
+            <th scope="col">
+              <div><span>Created</span></div>
+            </th>
+            <th scope="col">
+              <div><span>Category</span></div>
+            </th>
+            <th scope="col">
+              <div><span>Content</span></div>
+            </th>
+            <th scope="col">
+              <div><span>Dates</span></div>
+            </th>
+            <th scope="col">
+              <div class="container-sm">
+                <button>
+                  <img id="th-archive" width="25" height="25" />
+                </button>
+                <button>
+                  <img id="th-trash" width="25" height="25" />
+                </button>
+              </div>
+            </th>
+          </thead>
+          <tbody id="table-body"></tbody>
+        </table>
+        <div class="container-md">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Create Note
+          </button>
+          <div
+            class="modal fade"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">
+                    Create Note
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="FormControlInput1" class="form-label"
+                      >Name</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="FormControlInput1"
+                      placeholder="Note name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="FormControlSelect1" class="form-label"
+                      >Category</label
+                    >
+                    <select id="FormControlSelect1" class="form-select">
+                      <option>Task</option>
+                      <option>Random Thought</option>
+                      <option>Idea</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="FormControlTextarea1" class="form-label"
+                      >Content</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="FormControlTextarea1"
+                      rows="3"
+                      placeholder="Write your content..."
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    id="submit-form"
+                    data-bs-dismiss="modal"
+                  >
+                    Save
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">
+                    Change Note
+                  </h1>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <label for="changeNoteInput1" class="form-label"
+                      >Name</label
+                    >
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="changeNoteInput1"
+                      placeholder="Note name"
+                    />
+                  </div>
+                  <div class="mb-3">
+                    <label for="changeNoteSelect1" class="form-label"
+                      >Category</label
+                    >
+                    <select id="changeNoteSelect1" class="form-select">
+                      <option>Task</option>
+                      <option>Random Thought</option>
+                      <option>Idea</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label for="changeNoteTextarea1" class="form-label"
+                      >Content</label
+                    >
+                    <textarea
+                      class="form-control"
+                      id="changeNoteTextarea1"
+                      rows="3"
+                      placeholder="Write your content..."
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    id="submit-change"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
