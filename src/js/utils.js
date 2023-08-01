@@ -1,7 +1,6 @@
 import brain from '../../public/icons/brain-fill.svg';
 import cart from '../../public/icons/cart-fill.svg';
 import lightbulb from '../../public/icons/lightbulb-fill.svg';
-import populateTable from './main';
 
 let currentNote;
 
@@ -23,7 +22,6 @@ const addNote = (notes) => {
     content,
     dates: content.match(/\d{1,2}\/\d{1,2}\/\d{2,4}/g)?.join(', ') || '-',
   });
-  populateTable();
 };
 
 const setModalData = (note, notes) => {
@@ -54,22 +52,18 @@ const changeNote = (notes) => {
         ? lightbulb
         : brain,
   };
-  populateTable();
 };
 
-const archiveNote = (note, notes, archivedNotes) => {
-  archivedNotes.push({
-    ...notes.find((item) => item.name === note.getAttribute('class')),
-  });
-  deleteNote(note, notes);
-  setSummary(notes, archivedNotes);
+const moveNote = (note, currentArray, nextArray) => {
+  const targetItem = currentArray.find(
+    (item) => item.name === note.getAttribute('class')
+  );
+  nextArray.push({ ...targetItem });
+  deleteNote(note, currentArray);
 };
 
-const archiveAll = (notes, archivedNotes) => {
-  archivedNotes.push(...notes);
-  notes.splice(0, notes.length);
-  populateTable();
-  setSummary(notes, archivedNotes);
+const archiveAll = (currentArray, nextArray) => {
+  nextArray.push(...currentArray), currentArray.splice(0, currentArray.length);
 };
 
 const deleteNote = (note, notes) => {
@@ -80,59 +74,16 @@ const deleteNote = (note, notes) => {
   note.remove();
 };
 
-const deleteAll = (notes, archivedNotes) => {
+const deleteAll = (notes) => {
   notes.splice(0, notes.length);
-  populateTable();
-  setSummary(notes, archivedNotes);
-};
-
-const setSummary = (notes, archivedNotes) => {
-  const cartActiveLabel = document.querySelector('.secondary-cart-active');
-  const cartArchivedLabel = document.querySelector('.secondary-cart-archived');
-  const lightbulbActiveLabel = document.querySelector(
-    '.secondary-lightbulb-active'
-  );
-  const lightbulbArchivedLabel = document.querySelector(
-    '.secondary-lightbulb-archived'
-  );
-  const brainActiveLabel = document.querySelector('.secondary-brain-active');
-  const brainArchivedLabel = document.querySelector(
-    '.secondary-brain-archived'
-  );
-
-  cartActiveLabel.innerHTML = notes.reduce(
-    (acc, item) => (item.category === 'Task' ? acc + 1 : acc),
-    0
-  );
-  cartArchivedLabel.innerHTML = archivedNotes.reduce(
-    (acc, item) => (item.category === 'Task' ? acc + 1 : acc),
-    0
-  );
-  lightbulbActiveLabel.innerHTML = notes.reduce(
-    (acc, item) => (item.category === 'Idea' ? acc + 1 : acc),
-    0
-  );
-  lightbulbArchivedLabel.innerHTML = archivedNotes.reduce(
-    (acc, item) => (item.category === 'Idea' ? acc + 1 : acc),
-    0
-  );
-  brainActiveLabel.innerHTML = notes.reduce(
-    (acc, item) => (item.category === 'Random Thought' ? acc + 1 : acc),
-    0
-  );
-  brainArchivedLabel.innerHTML = archivedNotes.reduce(
-    (acc, item) => (item.category === 'Random Thought' ? acc + 1 : acc),
-    0
-  );
 };
 
 export {
   addNote,
   archiveAll,
-  archiveNote,
   changeNote,
   deleteAll,
   deleteNote,
+  moveNote,
   setModalData,
-  setSummary,
 };
