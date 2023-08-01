@@ -65,12 +65,25 @@ const archiveNote = (note, notes, archivedNotes) => {
   setSummary(notes, archivedNotes);
 };
 
+const archiveAll = (notes, archivedNotes) => {
+  archivedNotes.push(...notes);
+  notes.splice(0, notes.length);
+  populateTable();
+  setSummary(notes, archivedNotes);
+};
+
 const deleteNote = (note, notes) => {
   const deletedItemIndex = notes.findIndex(
     (item) => item.name === note.getAttribute('class')
   );
   notes.splice(deletedItemIndex, 1);
   note.remove();
+};
+
+const deleteAll = (notes, archivedNotes) => {
+  notes.splice(0, notes.length);
+  populateTable();
+  setSummary(notes, archivedNotes);
 };
 
 const setSummary = (notes, archivedNotes) => {
@@ -115,8 +128,10 @@ const setSummary = (notes, archivedNotes) => {
 
 export {
   addNote,
+  archiveAll,
   archiveNote,
   changeNote,
+  deleteAll,
   deleteNote,
   setModalData,
   setSummary,
