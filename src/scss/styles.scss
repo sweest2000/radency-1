@@ -13,7 +13,7 @@
 }
 
 .container-sm {
-  @apply flex justify-end gap-3;
+  @apply flex gap-3 w-full justify-end;
 }
 
 .container-md {
@@ -21,11 +21,11 @@
 }
 
 .container {
-  @apply flex flex-col justify-center ml-7 mr-10 mt-5 gap-4;
+  @apply flex flex-col justify-center mt-5 gap-4 w-max;
 }
 
 .main-table {
-  @apply flex flex-col gap-3 w-full text-[#78797E];
+  @apply flex flex-col gap-3 text-[#78797E];
 }
 
 thead tr {
@@ -37,12 +37,12 @@ tbody {
 }
 
 tr {
-  @apply flex bg-[#E8EAF5];
+  @apply flex bg-[#E8EAF5] w-fit;
 }
 
 td,
 th {
-  @apply flex flex-grow basis-56 pt-2 pb-2 pl-2 pr-0 w-12;
+  @apply flex pt-2 pb-2 pl-2 pr-0 w-48;
 }
 
 td img {
@@ -67,10 +67,29 @@ th {
 }
 
 .icon {
-  @apply pl-4;
+  @apply pl-4 w-12;
+}
+
+.icon-header {
+  @apply w-12;
 }
 
 #th-archive,
 #th-trash {
   filter: invert(100%);
+}
+
+.secondary-table {
+  @apply flex flex-col gap-3 text-[#78797E] mt-10 ml-auto w-full;
+  tr {
+    @apply flex w-full;
+    td,
+    th {
+      @apply w-72;
+    }
+    .icon,
+    .icon-header {
+      @apply w-12;
+    }
+  }
 }

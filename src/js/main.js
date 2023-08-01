@@ -11,6 +11,7 @@ import {
   changeNote,
   deleteNote,
   setModalData,
+  setSummary,
 } from './utils';
 
 const notes = [
@@ -62,31 +63,37 @@ const populateTable = () => {
     <td><div class="text-wrapper">${item.category}</div></td>
     <td><div class="text-wrapper">${item.content}</div></td>
     <td><div class="text-wrapper">${item.dates}</div></td>
-    <td class="container-sm">
-      <button>
-      <img src="${pencil}" width="25" height="25" class="change-note" data-bs-toggle="modal" data-bs-target="#exampleModal" />
-      </button>
-      <button>
-      <img src="${archive}" width="25" height="25" class="archive-note" />
-      </button>
-      <button>
-      <img src="${trash}" width="25" height="25" class="delete-note" />
-      </button>
+    <td>
+    <div class="container-sm">
+    <button>
+    <img src="${pencil}" width="25" height="25" class="change-note" data-bs-toggle="modal" data-bs-target="#exampleModal" />
+    </button>
+    <button>
+    <img src="${archive}" width="25" height="25" class="archive-note" />
+    </button>
+    <button>
+    <img src="${trash}" width="25" height="25" class="delete-note" />
+    </button>
+    </div>
     </td>
   </tr>`
     );
   });
 
   try {
+    setSummary(notes, archivedNotes);
     document.querySelectorAll('.change-note').forEach((item) => {
       item.addEventListener('click', (e) =>
-        setModalData(e.target.parentElement.parentElement.parentElement, notes)
+        setModalData(
+          e.target.parentElement.parentElement.parentElement.parentElement,
+          notes
+        )
       );
     });
     document.querySelectorAll('.archive-note').forEach((item) => {
       item.addEventListener('click', (e) =>
         archiveNote(
-          e.target.parentElement.parentElement.parentElement,
+          e.target.parentElement.parentElement.parentElement.parentElement,
           notes,
           archivedNotes
         )
@@ -94,7 +101,10 @@ const populateTable = () => {
     });
     document.querySelectorAll('.delete-note').forEach((item) => {
       item.addEventListener('click', (e) =>
-        deleteNote(e.target.parentElement.parentElement.parentElement, notes)
+        deleteNote(
+          e.target.parentElement.parentElement.parentElement.parentElement,
+          notes
+        )
       );
     });
   } catch (e) {
@@ -110,6 +120,9 @@ document
   .addEventListener('click', () => changeNote(notes));
 document.querySelector('#th-archive').src = archive;
 document.querySelector('#th-trash').src = trash;
+document.querySelector('#secondary-cart').src = cart;
+document.querySelector('#secondary-lightbulb').src = lightbulb;
+document.querySelector('#secondary-brain').src = brain;
 
 populateTable();
 

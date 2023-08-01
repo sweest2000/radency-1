@@ -22,7 +22,7 @@
       <div class="container">
         <table class="main-table">
           <thead>
-            <th scope="col"></th>
+            <th scope="col" class="icon-header"></th>
             <th scope="col">
               <div><span>Name</span></div>
             </th>
@@ -38,7 +38,7 @@
             <th scope="col">
               <div><span>Dates</span></div>
             </th>
-            <th scope="col">
+            <th scope="col" class="th-buttons">
               <div class="container-sm">
                 <button>
                   <img id="th-archive" width="25" height="25" />
@@ -211,6 +211,46 @@
             </div>
           </div>
         </div>
+        <table class="secondary-table">
+          <thead>
+            <th scope="col" class="icon-header"></th>
+            <th scope="col">
+              <div><span>Note Category</span></div>
+            </th>
+            <th scope="col">
+              <div><span>Active</span></div>
+            </th>
+            <th scope="col">
+              <div><span>Archived</span></div>
+            </th>
+          </thead>
+          <tbody id="table-body">
+            <tr>
+              <td scope="row" class="icon">
+                <img id="secondary-cart" width="25" height="25" />
+              </td>
+              <td class="name">Task</td>
+              <td class="secondary-cart-active">0</td>
+              <td class="secondary-cart-archived">0</td>
+            </tr>
+            <tr>
+              <td scope="row" class="icon">
+                <img id="secondary-lightbulb" width="25" height="25" />
+              </td>
+              <td class="name">Idea</td>
+              <td class="secondary-lightbulb-active">0</td>
+              <td class="secondary-lightbulb-archived">0</td>
+            </tr>
+            <tr>
+              <td scope="row" class="icon">
+                <img id="secondary-brain" width="25" height="25" />
+              </td>
+              <td class="name">Random Thought</td>
+              <td class="secondary-brain-active">0</td>
+              <td class="secondary-brain-archived">0</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
     <script type="module" src="js/main.js"></script>
