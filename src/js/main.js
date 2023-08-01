@@ -7,8 +7,10 @@ import trash from '../../public/icons/trash-fill.svg';
 import '../scss/styles.scss';
 import {
   addNote,
+  archiveAll,
   archiveNote,
   changeNote,
+  deleteAll,
   deleteNote,
   setModalData,
   setSummary,
@@ -118,6 +120,12 @@ document
 document
   .querySelector('#submit-change')
   .addEventListener('click', () => changeNote(notes));
+document
+  .querySelector('#archive-all')
+  .addEventListener('click', () => archiveAll(notes, archivedNotes));
+document
+  .querySelector('#delete-all')
+  .addEventListener('click', () => deleteAll(notes, archivedNotes));
 document.querySelector('#th-archive').src = archive;
 document.querySelector('#th-trash').src = trash;
 document.querySelector('#secondary-cart').src = cart;
